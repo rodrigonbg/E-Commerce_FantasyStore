@@ -34,7 +34,7 @@
   width: 80%;
   right: 1%;
   padding: 1%;
-  /* display: none; */
+  display: none;
   ul{
     display: flex;
     flex-direction: row;
@@ -69,62 +69,7 @@
   }
 }
 
-  /* -------------------------BARRA DE NAVEGACION DROPDOWN */
-  .header__dropdownMenu {
-    background: transparent;
-    padding: 0;
-    margin: 0;
-    border: none;
-  }
-  .header__dropdownMenu:hover {
-    background: #3a422f;
-  }
-  .header__dropdownMenu:focus {
-    background: transparent;
-  }
-  
-  .header__dropdownMenu__nav {
-    background-color: #768561;
-    width: 50%;
-    text-align: center;
-    border: solid 1px #424b37;
-  }
-  .header__dropdownMenu__nav a {
-    text-decoration: none;
-  }
-  
-  /* ----------------BOTONES DEL DROPDOWN */
-  .header__dropdownMenu__nav__linkBtn {
-    padding: 1%;
-    width: 70%;
-    border-radius: 15px;
-    margin: 1% 15%;
-    color: #fff;
-  }
-  .header__dropdownMenu__nav__linkBtn:hover {
-    background-color: #3a422f;
-    color: #fff !important;
-  }
-  .header__dropdownMenu__nav__linkBtn#selected {
-    color: #3a422f;
-  }
-  
-  .header__dropdownMenu__nav__loginBtn {
-    padding: 1%;
-    width: 80%;
-    border-radius: 15px;
-    margin: 5% 10%;
-    border: solid 1px #424b37;
-    background-color: #424b37;
-    color: white;
-  }
-  .header__dropdownMenu__nav__loginBtn:hover {
-    background-color: #3a422f;
-    color: white;
-  }
-  
-  /* -------------------Boton de BARRA DE BUSQUEDA DEL HEADER */
-  
+  /* -------------------BOTON de BARRA DE BUSQUEDA DEL HEADER */
   
   .SearchBar_Button {
     font-family: "Heebo", sans-serif;
@@ -136,7 +81,7 @@
     border-radius: 20px;
     background-color: rgba(209, 205, 205, 0.685);
     cursor: pointer;
-    /* display: none; */
+    display: none;
     order: 6;
   }
   .SearchBar_Button:hover {
@@ -145,7 +90,6 @@
   
   /* ----------------------------------------LOGIN */
   .header__loginButton {
-    display: none;
     padding: 5px 10px;
     border-radius: 30px;
     border: solid 1px #424b37;
@@ -165,6 +109,22 @@
     color: #fff;
     padding: 0 2%;
   }
-
-
   
+/* -------------------- DISEÑO RESPONIVE -------------------- */
+@media (min-width:980px) {
+  
+  /* -------------MOSTRAR NAV*/
+  .navbar_itemsContainer{
+    display: block;
+  }
+
+  /* -------------MOSTRAR BOTON DE BUSCAR*/
+  .SearchBar_Button{
+    display: block;
+  }
+
+  /* -------------MOSTRAR BOTON DE LOGIN*/
+  .header__loginButton{
+    display: block;
+  }
+}

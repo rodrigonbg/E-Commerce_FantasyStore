@@ -17,3 +17,17 @@
   .SearchBar:focus {
     width: 60%;
   }
+
+
+  /* -------------------- DISEÑO RESPONIVE -------------------- */
+@media (min-width:980px) {
+  .SearchBar{
+    width: 85%;
+    order: 5;
+    margin-right: 2%;
+    padding: 5px 0;
+    &:focus{
+      width: 85%;
+    }
+  }
+}
