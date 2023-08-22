@@ -1,0 +1,170 @@
+/* ---------------------------------------------------------------- */
+/* ------------------------------------------------- NAVBAR FIJO -- */
+/* ---------------------------------------------------------------- */
+.navbarContainer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: auto;
+  width: 100vw;
+  position: fixed;
+  z-index: 10;
+  background-color: #8B9E70;
+  padding: 10px 5% 5px 5%;
+}
+
+.navbar_logo{
+  min-width: 150px;
+  max-width:60%;
+}
+
+.navbarTools {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  justify-content: flex-end;
+  flex-wrap: wrap;
+  height: 100%;
+  width: 100%;
+}
+  
+  /* ----------------------------BARRA DE NAVEGACION */
+.navbar_itemsContainer {
+  width: 80%;
+  right: 1%;
+  padding: 1%;
+  /* display: none; */
+  ul{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    justify-content: space-between;
+    list-style: none;
+    text-decoration: none;
+    font-family: "Heebo", sans-serif;
+    font-size: small;
+    margin: 2px;
+    width: 100%;
+    padding: 0;
+  }
+}
+
+.navbar_item {
+  padding: 0 2%;
+  a{
+    color: white;
+    text-decoration: none;
+    &:hover{
+      color: #3a422f;
+      text-decoration: underline;   
+    }
+  }
+  #selected {
+    color: #3a422f;
+    height: auto;
+    width: 100%;
+    border-radius: 10PX;
+  }
+}
+
+  /* -------------------------BARRA DE NAVEGACION DROPDOWN */
+  .header__dropdownMenu {
+    background: transparent;
+    padding: 0;
+    margin: 0;
+    border: none;
+  }
+  .header__dropdownMenu:hover {
+    background: #3a422f;
+  }
+  .header__dropdownMenu:focus {
+    background: transparent;
+  }
+  
+  .header__dropdownMenu__nav {
+    background-color: #768561;
+    width: 50%;
+    text-align: center;
+    border: solid 1px #424b37;
+  }
+  .header__dropdownMenu__nav a {
+    text-decoration: none;
+  }
+  
+  /* ----------------BOTONES DEL DROPDOWN */
+  .header__dropdownMenu__nav__linkBtn {
+    padding: 1%;
+    width: 70%;
+    border-radius: 15px;
+    margin: 1% 15%;
+    color: #fff;
+  }
+  .header__dropdownMenu__nav__linkBtn:hover {
+    background-color: #3a422f;
+    color: #fff !important;
+  }
+  .header__dropdownMenu__nav__linkBtn#selected {
+    color: #3a422f;
+  }
+  
+  .header__dropdownMenu__nav__loginBtn {
+    padding: 1%;
+    width: 80%;
+    border-radius: 15px;
+    margin: 5% 10%;
+    border: solid 1px #424b37;
+    background-color: #424b37;
+    color: white;
+  }
+  .header__dropdownMenu__nav__loginBtn:hover {
+    background-color: #3a422f;
+    color: white;
+  }
+  
+  /* -------------------Boton de BARRA DE BUSQUEDA DEL HEADER */
+  
+  
+  .SearchBar_Button {
+    font-family: "Heebo", sans-serif;
+    font-weight: 600;
+    font-size: small;
+    padding: 5px 10px;
+    color: white;
+    border: solid 1px white;
+    border-radius: 20px;
+    background-color: rgba(209, 205, 205, 0.685);
+    cursor: pointer;
+    /* display: none; */
+    order: 6;
+  }
+  .SearchBar_Button:hover {
+    background-color: rgba(167, 161, 161, 0.685);
+  }
+  
+  /* ----------------------------------------LOGIN */
+  .header__loginButton {
+    display: none;
+    padding: 5px 10px;
+    border-radius: 30px;
+    border: solid 1px #424b37;
+    background-color: #424b37;
+    color: white;
+    font-family: "Heebo", sans-serif;
+    font-size: small;
+    cursor: pointer;
+    display: none;
+  }
+  .header__loginButton:hover {
+    background-color: #3a422f;
+  }
+  
+  /* -------------------------ICONOS MENU Y CARRITO*/
+  .fa-bars {
+    color: #fff;
+    padding: 0 2%;
+  }
+
+
+  
