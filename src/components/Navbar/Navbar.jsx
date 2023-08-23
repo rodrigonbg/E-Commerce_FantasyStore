@@ -4,9 +4,12 @@ import './Navbar.scss'
 import SearchBar from '../SearchBar/SearchBar'
 import Cart_Icon from '../Cart_Icon/Cart_Icon'
 import DropdownMenu from '../DropdownMenu/DropdownMenu'
+import ListItem from '../ListItem/ListItem'
+import LoginButton from '../LoginButton/LoginButton'
 
 
-const Navbar = () => {
+const Navbar = (props) => {
+    
     return(
         <section className="navbarContainer">
             <a href="index.html">
@@ -16,11 +19,11 @@ const Navbar = () => {
             <span className="navbarTools">
                 <nav className="navbar_itemsContainer">
                     <ul>{/* Barra de navegacíon */}
-                        <li className="navbar_item" ><a id="selected" href="index.html">Inicio</a></li>
-                        <li className="navbar_item" ><a href="Pages/Furnitures.html">Furnitures</a></li>
-                        <li className="navbar_item" ><a href="Pages/Sobre-nosotros.html">Sobre nosotros</a></li>
-                        <li className="navbar_item" ><a href="Pages/Ayuda.html">Ayuda</a></li>
-                        <li className="navbar_item" ><a href="Pages/Contacto.html">Contacto</a></li>
+                        <ListItem href="index.html" text="Homepage" id={props.index}/>
+                        <ListItem href="Pages/Furnitures.html" text="Furnitures" id={props.furnitures} />
+                        <ListItem href="Pages/Sobre-nosotros.html" text="About Us" id={props.aboutUs} />
+                        <ListItem href="Pages/Ayuda.html" text="Help" id={props.help} />
+                        <ListItem href="Pages/Contacto.html" text="Contact" id={props.contact} />
                     </ul>
                 </nav>
 
@@ -32,10 +35,10 @@ const Navbar = () => {
                 <Cart_Icon />
 
                 {/* Boton de menú */}
-                <DropdownMenu />
+                <DropdownMenu index="selected" />
 
                 {/* login */}
-                <input  className="header__loginButton" type="button" value="Login" />
+                <LoginButton className="loginButton"/>
             </span>
         </section>
 

@@ -5,7 +5,8 @@ function App() {
   return(
     <>
       <header>
-        <Navbar></Navbar>
+        <Navbar index="selected"/>
+        {/* Paso por parametro, cual deberia ser el item seleccionado */}
       </header> 
 
       <main>

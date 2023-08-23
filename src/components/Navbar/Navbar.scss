@@ -29,7 +29,7 @@
   width: 100%;
 }
   
-  /* ----------------------------BARRA DE NAVEGACION */
+/* ----------------------------BARRA DE NAVEGACION */
 .navbar_itemsContainer {
   width: 80%;
   right: 1%;
@@ -51,64 +51,31 @@
   }
 }
 
-.navbar_item {
-  padding: 0 2%;
-  a{
-    color: white;
-    text-decoration: none;
-    &:hover{
-      color: #3a422f;
-      text-decoration: underline;   
-    }
-  }
-  #selected {
-    color: #3a422f;
-    height: auto;
-    width: 100%;
-    border-radius: 10PX;
+/* -------------------BOTON DE BUSCAR */
+.SearchBar_Button {
+  font-family: "Heebo", sans-serif;
+  font-weight: 600;
+  font-size: small;
+  padding: 5px 10px;
+  color: white;
+  border: solid 1px white;
+  border-radius: 20px;
+  background-color: rgba(209, 205, 205, 0.685);
+  cursor: pointer;
+  display: none;
+  order: 6;
+  &:hover{
+    background-color: rgba(167, 161, 161, 0.685);    
   }
 }
 
-  /* -------------------BOTON de BARRA DE BUSQUEDA DEL HEADER */
+
   
-  .SearchBar_Button {
-    font-family: "Heebo", sans-serif;
-    font-weight: 600;
-    font-size: small;
-    padding: 5px 10px;
-    color: white;
-    border: solid 1px white;
-    border-radius: 20px;
-    background-color: rgba(209, 205, 205, 0.685);
-    cursor: pointer;
-    display: none;
-    order: 6;
-  }
-  .SearchBar_Button:hover {
-    background-color: rgba(167, 161, 161, 0.685);
-  }
-  
-  /* ----------------------------------------LOGIN */
-  .header__loginButton {
-    padding: 5px 10px;
-    border-radius: 30px;
-    border: solid 1px #424b37;
-    background-color: #424b37;
-    color: white;
-    font-family: "Heebo", sans-serif;
-    font-size: small;
-    cursor: pointer;
-    display: none;
-  }
-  .header__loginButton:hover {
-    background-color: #3a422f;
-  }
-  
-  /* -------------------------ICONOS MENU Y CARRITO*/
-  .fa-bars {
-    color: #fff;
-    padding: 0 2%;
-  }
+/* -------------------------ICONOS MENU*/
+.fa-bars {
+  color: #fff;
+  padding: 0 2%;
+}
   
 /* -------------------- DISEÑO RESPONIVE -------------------- */
 @media (min-width:980px) {
@@ -120,11 +87,6 @@
 
   /* -------------MOSTRAR BOTON DE BUSCAR*/
   .SearchBar_Button{
-    display: block;
-  }
-
-  /* -------------MOSTRAR BOTON DE LOGIN*/
-  .header__loginButton{
     display: block;
   }
 }

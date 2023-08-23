@@ -1,57 +1,42 @@
-   /* -------------------------MENU DROPDOWN */
-   .header__dropdownMenu {
-    background: transparent;
-    padding: 0;
-    margin: 0;
-    border: none;
-  }
-  .header__dropdownMenu:hover {
+/* -------------------------MENU DROPDOWN */
+.dropdownMenu_Icon {
+  background: transparent;
+  padding: 0;
+  margin: 0;
+  border: none;
+  &:hover{
     background: #3a422f;
   }
-  .header__dropdownMenu:focus {
+  &:focus{
     background: transparent;
   }
+}
   
-  .header__dropdownMenu__nav {
-    background-color: #768561;
-    width: 50%;
-    text-align: center;
-    border: solid 1px #424b37;
-  }
-  .header__dropdownMenu__nav a {
+.dropdownMenu_Ul {
+  background-color: #768561;
+  width: 50%;
+  text-align: center;
+  border: solid 1px #424b37;
+  a{
     text-decoration: none;
   }
- 
+}
  
  /* ----------------BOTONES DEL DROPDOWN */
-  .header__dropdownMenu__nav__linkBtn {
-    padding: 1%;
-    width: 70%;
-    border-radius: 15px;
-    margin: 1% 15%;
-    color: #fff;
-  }
-  .header__dropdownMenu__nav__linkBtn:hover {
-    background-color: #3a422f;
-    color: #fff !important;
-  }
-  .header__dropdownMenu__nav__linkBtn#selected {
+.dropdownMenu_linkBtn {
+  padding: 1%;
+  width: 70%;
+  border-radius: 15px;
+  margin: 1% 15%;
+  color: #fff;
+  &#selected {
     color: #3a422f;
   }
-  
-  .header__dropdownMenu__nav__loginBtn {
-    padding: 1%;
-    width: 80%;
-    border-radius: 15px;
-    margin: 5% 10%;
-    border: solid 1px #424b37;
-    background-color: #424b37;
-    color: white;
-  }
-  .header__dropdownMenu__nav__loginBtn:hover {
+  &:hover{
     background-color: #3a422f;
-    color: white;
+    color: #fff !important;   
   }
+}
 
 /* -------------------- DISEÑO RESPONIVE -------------------- */
 @media (min-width:980px) {
