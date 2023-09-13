@@ -1,47 +1,58 @@
+import { NavLink, Link } from 'react-router-dom'
 import logo from '../../logos/logo-fantasy-white.png'
-import './Navbar.scss'
 
+/* Styles */
+import './Navbar.scss'
+import "./ListItem.scss"
+
+/* Components */
 import SearchBar from '../SearchBar/SearchBar'
 import Cart_Icon from '../Cart_Icon/Cart_Icon'
 import DropdownMenu from '../DropdownMenu/DropdownMenu'
-import ListItem from '../ListItem/ListItem'
 import LoginButton from '../LoginButton/LoginButton'
 
+export const routesLink = [ {text:'HomePage', path:'/'},
+                            {text:'Categories', path:'/categories'},
+                            {text:'About Us', path:'/about_us'},
+                            {text:'Help', path:'/help'},
+                            {text:'Contact', path:'/contact'}]
 
-const Navbar = (props) => {
+const Navbar = () => {
     
     return(
-        <section className="navbarContainer">
-            <a href="index.html">
-                <img className="navbar_logo" src={logo} alt="Logotipo" />
-            </a>
+            <section className="navbarContainer">
+                <Link to='/'>
+                    <img className="navbar_logo" src={logo} alt="Logotipo" />
+                </Link>
 
-            <span className="navbarTools">
-                <nav className="navbar_itemsContainer">
-                    <ul>{/* Barra de navegacíon */}
-                        <ListItem href="index.html" text="Homepage" id={props.index}/>
-                        <ListItem href="Pages/Furnitures.html" text="Furnitures" id={props.furnitures} />
-                        <ListItem href="Pages/Sobre-nosotros.html" text="About Us" id={props.aboutUs} />
-                        <ListItem href="Pages/Ayuda.html" text="Help" id={props.help} />
-                        <ListItem href="Pages/Contacto.html" text="Contact" id={props.contact} />
-                    </ul>
-                </nav>
+                <span className="navbarTools">
 
-                <SearchBar />
+                    <nav className="navbar_itemsContainer">
+                        <div>
+                            {/* Barra de navegacíon. Recorro el array con map y genero los NavLinks */}
+                            {routesLink.map(({text, path})=>{
+                                return <NavLink key={text} to={path} className={({isActive})=> `navbar_item ${isActive ? "selected" : ""}` }> {text} </NavLink>
+                            })}
+                        </div>    
+                    </nav>
 
-                {/* Boton del Buscador */}
-                <input className="SearchBar_Button" type="button" value="buscar" />
+                    <SearchBar />
 
-                <Cart_Icon />
+                    {/* Boton del Buscador */}
+                    <input className="SearchBar_Button" type="button" value="buscar" />
 
-                {/* Boton de menú */}
-                <DropdownMenu index="selected" />
+                    <Link to='/Cart'>
+                        <Cart_Icon/>
+                    </Link> 
 
-                {/* login */}
-                <LoginButton className="loginButton"/>
-            </span>
-        </section>
+                    {/* Boton de menú */}
+                    <DropdownMenu />
 
+                    {/* login */}
+                    <LoginButton className="loginButton"/>
+                </span>
+            </section>
+        
     )
 }
 

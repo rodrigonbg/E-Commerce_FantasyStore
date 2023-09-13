@@ -1,0 +1,14 @@
+main{
+    margin: 0 5vw 10% 5vw;
+    padding-top: 9vh;
+}
+
+
+
+/* RESPONSIVE DEL MAIN */
+@media (min-width:980px) {
+
+    main{
+        margin: 0 10vw 10% 10vw;
+    }
+}

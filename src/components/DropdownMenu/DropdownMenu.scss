@@ -29,7 +29,7 @@
   border-radius: 15px;
   margin: 1% 15%;
   color: #fff;
-  &#selected {
+  &.selected {
     color: #3a422f;
   }
   &:hover{

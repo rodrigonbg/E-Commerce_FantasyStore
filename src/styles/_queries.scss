@@ -6,7 +6,7 @@
 }
 
 
-@media (min-width:980px) { 
+
     /* ----------------------------------------------------------------- */
     /* --------------------------------------------RESPONSIVE DEL HEADER */
     /* ----------------------------------------------------------------- */
@@ -89,57 +89,6 @@
      /* -------------------------INDEX*/
      .main__indexContainer{
         margin: $margin-desktop-container;
-    }
-
-    /* ITEMS DE OFERTA*/
-    .item__innerBox{
-        .icons{
-            opacity: 0 !important;
-        }
-        .cart-btn{
-            opacity: 0 !important;
-            bottom: 10px !important;
-            left: 25%;
-            width: 50% !important;
-        }
-        &:hover{
-            box-shadow: 0 33px 61px -29px rgb(0 0 0 /50%);
-            .cart-btn{
-                opacity: 1 !important;
-            }
-    
-            .icons{
-                top: 3%;
-                opacity: 1 !important;
-                cursor: pointer;
-                a{
-                    @include size(30px, 30px);
-                    &:hover{
-                        .fa-heart{
-                            transform: scale(1.1, 1.1);  
-                        }
-                        .fa-eye{
-                            transform: scale(1.1, 1.1);  
-                        }
-                    }           
-                }
-            }
-        }
-
-    }
-
-    .item__info{
-        .item__name{
-            font-size: large !important;
-        }
-        .item__price{
-            font-size: medium !important;
-            &.onSale{
-                #precioOriginal{
-                    font-size:small;
-                }                    
-            }
-        }
     }
 
 
