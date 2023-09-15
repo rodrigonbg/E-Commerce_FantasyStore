@@ -32,7 +32,7 @@ const ItemFullPrice_Card = (prod) => {
             </div>
             <div className="item_info"> {/* INFO DEL PRODUCTO */}
                 <div className="item_name">
-                    <p>${prod.nombre}</p>
+                    <p>{prod.nombre}</p>
                 </div>
                 <div className="item_price">
                     <span id="precioOriginal">${prod.precio}</span>

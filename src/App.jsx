@@ -11,7 +11,7 @@ import Cart from './pages/Cart/Cart'
 import Help from './pages/Help/Help'
 import HomePage from './pages/HomePage/HomePage.jsx'
 import Category from './pages/Category/Category'
-
+import Footer from './components/Footer/Footer'
 
 
 
@@ -38,7 +38,7 @@ function App() {
       </main>
 
       <footer>
-          
+          <Footer/>
       </footer>  
     </BrowserRouter>
   )

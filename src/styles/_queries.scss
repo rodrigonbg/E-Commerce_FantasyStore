@@ -100,25 +100,6 @@
         font-size: 300%;
     }
 
-     /* -------------------------AYUDA*/
-    .main__helpContainer{
-        margin: $margin-desktop-container;
-    }
-
-    /* -------------------------SOBRE NOSOTROS*/
-    .main__aboutUsContainer{
-        margin: $margin-desktop-container;
-    }
-
-    /* -------------------------CONTACTO*/    
-    .main__contactContainer{
-        margin: $margin-desktop-container;
-    }
-
-    /* -------------------------FURNITURES*/  
-    .main__furnituresContainer{
-        margin: $margin-desktop-container;
-    }
 
     /* -------------------------TEXTOS DEL MAIN*/ 
     main{
@@ -137,55 +118,6 @@
         }     
     } 
 
-    /* ----------------------------------------------------------------- */
-    /* --------------------------------------------RESPONSIVE DEL FOOTER */
-    /* ----------------------------------------------------------------- */
-    
-    /* --------------------------REORDENAR GRID DEL FOOTER*/
-    .footer__gridContainer{
-        padding: 2% 10%;
-        font-size: medium;
-        grid-template-columns: 1fr 1fr 1fr 1fr;
-        grid-template-rows: auto;
-        grid-template-areas: 
-            "socialNetworks     payments    footerInfo     newsLetter";
-        align-items: stretch;
-        grid-gap: 1%;
-    }
-
-    /* --------------------------ESTILOS DEL FOOTER*/
-    footer{
-        section{
-            div{
-                border: none;
-                border-right: solid 1px rgb(255, 255, 255);   
-            }
-        }
-    }
-
-    .footer__newsLetter{
-        border: none;
-    }
-
-    .footer__tittle{
-        font:$h4-footer-desktop;
-    }
-
-    .footer__socialNetworks{
-        h5{
-            font: $h5-footer-desktop;
-        }
-    }
-    
-    .footer__info{
-        h5{
-            font: $h5-footer-desktop;
-        }
-    }
-    
-    .footer__texto{
-        font: $p-footer-desktop;
-    }
 
 
     /* ----------------------------------------------------------------- */

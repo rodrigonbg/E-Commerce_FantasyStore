@@ -36,7 +36,7 @@ const ItemOnSale_Card = (prod) => {/*items en liquidación */
             </div>
             <div className="item_info">{/* INFO DEL PRODUCTO */}
                 <div className="item_name">
-                    <p>${prod.nombre}</p>
+                    <p>{prod.nombre}</p>
                 </div>
                 <div className="item_price onSale">
                     <span id="precioOnSale">${precioConDescuento.toFixed(2)}</span>
