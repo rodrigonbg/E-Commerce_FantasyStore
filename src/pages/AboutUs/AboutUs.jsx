@@ -3,6 +3,8 @@ import './AboutUs.scss'
 
 const AboutUs = () => {
   return (
+    <>
+
     <section className="aboutUs_Container">
 
       <SectionTitle text={'Sobre nosotros'}/>
@@ -22,7 +24,8 @@ const AboutUs = () => {
       <div> 
           <p style={{fontWeight: 800, textAlign: 'center', margin: 40}}>Gracias por confiar en nosotros para hacer realidad tus proyectos de decoración. ¡Esperamos verte pronto en nuestra tienda!</p>
       </div>
-</section>
+  </section>
+  </>
   )
 }
 

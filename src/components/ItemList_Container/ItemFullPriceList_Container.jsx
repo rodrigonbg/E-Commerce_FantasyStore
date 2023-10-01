@@ -25,13 +25,17 @@ const ItemFullPriceList_Container = () => {
         if (!prod.onSale){
           return (
             <ItemFullPrice_Card
-              key = {prod.id}
-              descuento = {prod.descuento}
-              img = {prod.img}
-              alt = {prod.alt}
-              id = {prod.id}
-              nombre = {prod.nombre}
-              precio = {prod.precio}
+            key = {prod.id}
+            id = {prod.id}
+            nombre = {prod.nombre}
+            descripcion = {prod.descripcion}
+            categoria = {prod.categoria}
+            img = {prod.img}
+            precio = {prod.precio}
+            onSale = {prod.onSale}
+            descuento = {prod.descuento}
+            stock = {prod.stock}
+            alt = {prod.alt}
             />
           )
         }  

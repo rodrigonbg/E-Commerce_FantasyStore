@@ -169,62 +169,8 @@
     /* ------------------------------------------ RESPONSIVE DEL CARRITO */
     /* ----------------------------------------------------------------- */
 
-    .tablaCarrito{
-
-        .cabezaLista{
-            p{
-                font-size: larger;
-                strong{
-                    font-size:x-large;
-                }
-            }        
-        }
-        .cuerpoLista{
-            .prodCarrito{
-                padding: 20px 0;
-                .cantidadProdCarrito{
-                    .btn{
-                        padding: 15%;
-                        font-size: x-large !important;
-                        &:active{
-                            background-color: $primary-color;
-                            color: white;
-                        }
-                    }
-                    span{
-                        font-size: x-large !important;
-                        margin: 6%;
-                    }
-                }
-                div{
-                    .imgCarrito{
-                        width: 10vw;
-                    } 
-                    i{
-                        cursor: pointer;
-                    }
-                    span#saleTag{
-                        font-size: medium;
-                        border-radius: 25px;
-                        padding: 5px;
-                    }
-                }  
-                p{
-                    font-size: large;
-                    span#precioOriginal{
-                        font-size:medium;
-                        text-decoration: line-through;
-                        color: $primary-color;
-                    }
-                }
-
-            }
-        }
-
-    }
 
 
-}
 
 
 

@@ -1,6 +1,7 @@
 import 'bootstrap'
 import './Footer.scss'
 import NewsletterForm from '../NewsletterForm/NewsletterForm'
+import wavesOfFooter from '../../imgs/Waves-Footer.png'
 
 
 const Footer = () => {
@@ -8,7 +9,7 @@ const Footer = () => {
     return (
         
         <>
-        <img className="waves" src='Imagenes/Waves-Footer.png' alt="bordes del footer"/>
+        <img className="waves" src={wavesOfFooter} alt="bordes del footer"/>
         <section className="footer_Container">
 
             {/* <!-- Seccion de las redes sociales --> */}

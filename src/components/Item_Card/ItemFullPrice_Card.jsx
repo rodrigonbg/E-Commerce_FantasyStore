@@ -2,19 +2,28 @@ import "bootstrap"
 import './Item_Card.scss'
 import {Link} from 'react-router-dom'
 
-const carrito=[]
-
+import { useContext } from 'react'
+import { CartContext } from '../../context/CartContext'
 
 const ItemFullPrice_Card = (prod) => {
 
+    const {addItem, removeItem , cart} = useContext(CartContext)
+
+    let btnAddRemove
     let buttonIcon
     let butonText
-    if (carrito.some((elemento)=> elemento.id === prod.id)){/* creo la variable botón segun corresponda por cada prod. (si está o no en el carrito) */
+    if (cart.some((elemento)=> elemento.item.id === prod.id)){/* creo la variable botón segun corresponda por cada prod. (si está o no en el carrito) */
         buttonIcon = <i className="fa-solid fa-xmark"></i>
         butonText = 'Quitar'
+        btnAddRemove =  <button id={prod.id} onClick={()=>{removeItem(prod.id)}} className="btn btn-white shadow-sm rounded-pill bg-white cart-btn" >
+                            {buttonIcon}{butonText}
+                        </button>
     }else{
         buttonIcon = <i id="articles" className="fa-solid fa-cart-shopping"></i>
         butonText = 'Añadir'
+        btnAddRemove =  <button id={prod.id} onClick={()=>{addItem(prod, 1)}} className="btn btn-white shadow-sm rounded-pill bg-white cart-btn" >
+                            {buttonIcon}{butonText}
+                        </button>
     }
     return (
         <div key={prod.id} className="item  col-lg-2 col-md-3 col-sm-4 col-6"> {/* PRODUCTO */}
@@ -25,9 +34,7 @@ const ItemFullPrice_Card = (prod) => {
                 </div>
                 <Link to={`/products/${prod.id}`}> <img src={prod.img} alt={prod.alt} /> </Link> {/* IMAGEN DEL PRODUCTO */}
                 <div className=""> {/* BOTON DEL CARRRITO */}
-                    <button id={prod.id} className="btn btn-white shadow-sm rounded-pill bg-white cart-btn">
-                        {buttonIcon}{butonText}
-                    </button>
+                    {btnAddRemove}
                 </div>
             </div>
             <div className="item_info"> {/* INFO DEL PRODUCTO */}

@@ -3,18 +3,31 @@ import {Link} from 'react-router-dom'
 import "bootstrap"
 import './Item_Card.scss'
 
+import { useContext } from 'react'
+import { CartContext } from '../../context/CartContext'
 
 const carrito=[]
 
 const ItemOnSale_Card = (prod) => {/*items en liquidación */
+
+    const {addItem, removeItem , cart} = useContext(CartContext)
+
+    let btnAddRemove
     let buttonIcon
     let butonText
-    if (carrito.some((elemento)=> elemento.id === prod.id)){/* creo la variable botón segun corresponda por cada prod. (si está o no en el carrito) */
+
+    if (cart.some((elemento)=> elemento.item.id === prod.id)){/* creo la variable botón segun corresponda por cada prod. (si está o no en el carrito) */
         buttonIcon = <i className="fa-solid fa-xmark"></i>
         butonText = 'Quitar'
+        btnAddRemove =  <button id={prod.id} onClick={()=>{removeItem(prod.id)}} className="btn btn-white shadow-sm rounded-pill bg-white cart-btn">
+                                {buttonIcon}{butonText}
+                            </button>
     }else{
         buttonIcon = <i id="articles" className="fa-solid fa-cart-shopping"></i>
         butonText = 'Añadir'
+        btnAddRemove =  <button id={prod.id} onClick={()=>{addItem(prod ,1)}} className="btn btn-white shadow-sm rounded-pill bg-white cart-btn">
+                                {buttonIcon}{butonText}
+                            </button>
     } 
     let precioConDescuento = ((100-prod.descuento)*prod.precio)/100
     return (
@@ -29,9 +42,7 @@ const ItemOnSale_Card = (prod) => {/*items en liquidación */
                 </div>
                 <Link to={`/products/${prod.id}`}> <img src= {prod.img} alt={prod.alt}/> </Link>{/* IMAGEN DEL PRODUCTO */}
                 <div className="">{/* BOTON DEL CARRRITO */}
-                    <button id={prod.id} className="btn btn-white shadow-sm rounded-pill bg-white cart-btn">
-                        {buttonIcon}{butonText}
-                    </button>
+                    {btnAddRemove}
                 </div>
             </div>
             <div className="item_info">{/* INFO DEL PRODUCTO */}

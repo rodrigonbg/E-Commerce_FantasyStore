@@ -41,9 +41,9 @@ const Navbar = () => {
                     {/* Boton del Buscador */}
                     <input className="SearchBar_Button" type="button" value="buscar" />
 
-                    <Link to='/Cart'>
+                    <NavLink to='/Cart' className={({isActive})=> ` ${isActive ? "selected" : "notSelected"}` }>
                         <Cart_Icon/>
-                    </Link> 
+                    </NavLink> 
 
                     {/* Boton de menú */}
                     <DropdownMenu />

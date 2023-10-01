@@ -3,10 +3,16 @@ import 'bootstrap'
 import {Link} from 'react-router-dom'
 import { useEffect, useState } from 'react'
 
+import { CartContext } from '../../context/CartContext'
+import { useContext } from 'react'
+
 const Product_Detail = ({id, nombre, descripcion, categoria, img, precio, onSale, descuento, stock, alt }) => {
 
+  const item = {id, nombre, descripcion, categoria, img, precio, onSale, descuento, stock, alt }
   const [amount, setAmount] = useState(1)/* Cantidad de unidades a agregar al carrito */
   const onSalePrice = (((100-descuento)*precio)/100);
+
+  const {addItem} = useContext(CartContext)
 
   /* Funcion para incrementar elcontador de productos a agregar en 1  */
   const increaseAmount = () =>{
@@ -20,6 +26,8 @@ const Product_Detail = ({id, nombre, descripcion, categoria, img, precio, onSale
       setAmount(amount - 1)
     }
   }
+  
+
 
   return (
       <div key={id} className = 'product_Detail'>
@@ -59,7 +67,7 @@ const Product_Detail = ({id, nombre, descripcion, categoria, img, precio, onSale
                 <button onClick={increaseAmount}>+</button>
               </div>
               <p>Stock disponible: {stock}</p>
-              <button className='cartButton' >Add to cart</button>
+              <button className='cartButton' onClick={()=>{ addItem(item, amount)}} >Add to cart</button>
             </div>
 
           </article>

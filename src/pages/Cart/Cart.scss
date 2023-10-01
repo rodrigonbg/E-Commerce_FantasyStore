@@ -1,0 +1,142 @@
+@import "../../styles/variables";
+
+
+.cart_Container{
+    margin: $margin-mobile-container; 
+    padding-bottom: 10%;
+
+}
+
+/* lista de productos en carrito */
+.tablaCarrito{
+    font-family:$font-family2;
+    width:100%;
+    font-size: smaller;
+    .cabezaLista{
+        display: flex;
+        justify-content: space-between;
+        padding:5px 0;
+        border-bottom: 2px solid $primary-color;
+        p{
+            display: flex;
+            justify-content: center;
+            width: 14%;
+            strong{
+                font-size: smaller;
+            }
+        }        
+    }
+
+
+
+    .pieLista{
+        display: flex;
+        justify-content: space-between;
+        margin: 20px 0;
+        margin-right: 20px;
+        font-size: medium;
+        .btnVaciarCarrito{
+            width: 20%;
+            padding: 5px 0;
+            margin: 1% 0;
+            border-radius: 30px;
+            background-color: white;
+            color: $primary-color;
+            font-weight:600;
+            cursor: pointer;
+            &:hover{
+                background-color: $primary-color;
+                color: white;
+            }   
+        }
+    }
+}
+
+
+/* Botones */
+.botonesCarrito{
+    margin-top: 30px;
+    display: flex;
+    justify-content: space-between;
+    .Link{
+        display: flex;
+        align-content: center;
+        justify-content: center;
+        width:30%;
+        border-radius: 30px;
+        padding: 15px 0;
+        margin: 1% 0;
+        border-radius: 30px;
+        background-color: $primary-color;
+        color: white;
+        font-weight:600;
+        font-size: medium;
+        cursor: pointer;
+        &:hover{
+            background-color: $btn-darkGreen-hoven;
+        }     
+    }
+}
+
+
+
+/* ----------------------------------------------------------------- */
+/* ------------------------------------------ RESPONSIVE DEL CARRITO */
+/* ----------------------------------------------------------------- */
+@media (min-width:768px) or (orientation: landscape) {
+
+    .tablaCarrito{
+
+        .cabezaLista{
+            p{
+                font-size: larger;
+                strong{
+                    font-size:x-large;
+                }
+            }        
+        }
+        .cuerpoLista{
+            .prodCarrito{
+                padding: 20px 0;
+                .cantidadProdCarrito{
+                    .btn{
+                        padding: 15%;
+                        font-size: x-large !important;
+                        &:active{
+                            background-color: $primary-color;
+                            color: white;
+                        }
+                    }
+                    span{
+                        font-size: x-large !important;
+                        margin: 6%;
+                    }
+                }
+                div{
+                    .imgCarrito{
+                        width: 10vw;
+                    } 
+                    i{
+                        cursor: pointer;
+                    }
+                    span#saleTag{
+                        font-size: medium;
+                        border-radius: 25px;
+                        padding: 5px;
+                    }
+                }  
+                p{
+                    font-size: large;
+                    span#precioOriginal{
+                        font-size:medium;
+                        text-decoration: line-through;
+                        color: $primary-color;
+                    }
+                }
+
+            }
+        }
+
+    }
+
+}

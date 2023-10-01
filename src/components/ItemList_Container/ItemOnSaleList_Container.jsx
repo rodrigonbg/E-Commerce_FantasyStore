@@ -21,22 +21,25 @@ const ItemOnSaleList_Container = () => {
       .then(respuesta => setProducts(respuesta))
 
   }, [id])
- 
 
   return ( /* Return de productos OnSale */
-      <div className="section_container">  
+      <div id='onSale' className="section_container">  
         <section id="itemsDestacados" className="row">
           {products.map((prod)=>{
             if (prod.onSale){
               return (
                 <ItemOnSale_Card 
                   key = {prod.id}
-                  descuento = {prod.descuento}
-                  img = {prod.img}
-                  alt = {prod.alt}
                   id = {prod.id}
                   nombre = {prod.nombre}
+                  descripcion = {prod.descripcion}
+                  categoria = {prod.categoria}
+                  img = {prod.img}
                   precio = {prod.precio}
+                  onSale = {prod.onSale}
+                  descuento = {prod.descuento}
+                  stock = {prod.stock}
+                  alt = {prod.alt}
                 />
               )
             }  
