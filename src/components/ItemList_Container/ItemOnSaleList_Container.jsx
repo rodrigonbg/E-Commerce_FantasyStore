@@ -1,26 +1,32 @@
 import React from "react"
-import { useState, useEffect } from "react"
 import 'bootstrap'
 import './ItemOnSaleList_Container'
-import { useParams } from 'react-router-dom'
-
 import ItemOnSale_Card from "../Item_Card/ItemOnSale_Card"
-import { getProducts, getProductsByCategory } from '../../productos'
-
-
-
-
+import { useState, useEffect } from "react"
+import { useParams } from 'react-router-dom'
+import { collection, getDocs, where, query } from "firebase/firestore" 
+import { db } from "../../services/config"
 
 const ItemOnSaleList_Container = () => {
   const [products, setProducts] = useState([])
-  const {id} = useParams() /* me levanta el id como string */
+  const {idCat} = useParams() /* me levanta el id como string */
 
-  useEffect(()=>{
-    const funcion = id? getProductsByCategory : getProducts /* Si useParams levantó un id, uso la funcion getProductsByCategory, de lo contrario uso getProducts en gral */
-    funcion(parseInt(id))
-      .then(respuesta => setProducts(respuesta))
+  useEffect( ()=>{
+    const misProductos = idCat ? query(collection(db, 'productos'),where("idCategoria", "==", +idCat)) : collection(db, 'productos')
+    /* Si hay id de categorias, levanto los productos filtrando por categorias. si no hay id de categorias, levanto todos los productos */
 
-  }, [id])
+    getDocs(misProductos)
+      .then(res => {
+        const nuevosProductos = res.docs.map(doc => {
+          const data = doc.data()
+          return {id: doc.id, ...data}
+        })
+        setProducts(nuevosProductos)
+      })
+      .catch(e => {
+        return (<p>Error con la Base de datos</p>)
+      })
+  },[idCat])
 
   return ( /* Return de productos OnSale */
       <div id='onSale' className="section_container">  

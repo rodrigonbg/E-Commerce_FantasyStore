@@ -1,124 +1,7 @@
-@media (min-width:768px) or (orientation: landscape) {
-
-    .header__imgs{
-        top: 245px;
-    }
-}
 
 
 
-    /* ----------------------------------------------------------------- */
-    /* --------------------------------------------RESPONSIVE DEL HEADER */
-    /* ----------------------------------------------------------------- */
-
-    /* ----------------------REORDENO EL GRID DEL HEADER*/
-    .header__gridContainer{
-        background-color: $primary-color;
-        grid-template-rows: auto auto;
-        grid-template-columns: 1.2fr 2fr;
-        grid-template-areas: 
-            "headerInfo     headerImgs"
-            "headerButtons  headerImgs";
-        margin-bottom: 150px;
-        row-gap: 2%;
-    }
-
-    /* --------------AJUSTAR PARTE FIJA DEL HEADER*/
-    .header__fixed{
-        padding: 5px 10% 5px 10%;
-
-    }
-
-    /* ------------------AJUSTAR TEXTO DEL HEADER*/
-    .header__info{
-        @include flexCenter(column);
-        justify-content: end;
-        margin-top: 108px;
-        padding: 2% 0;
-        padding-left: 10vw;
-        height: 70%;
-    }
-
-    .header__info__tittle{
-        text-align: left;
-
-    }
-    .header__info__p {
-        text-align: left;
-        font-size: 120%;
-    }
-
-    /* --------------AJUSTAR IMAGENES DEL HEADER*/
-    .header__imgs{
-        right: 10vw;
-        width: 50%;
-        .imgs{
-            padding: 0;
-        }
-    }
-
-    /* ------------AJUSTAR BOTONES BUYNOW Y EXPLORE*/
-    .header__buttons{
-        margin-top: 3%;
-        padding: 1% 0 10% 0;
-        padding-left: 10vw;
-        display: flex;
-        justify-content: space-between;
-        align-items: flex-start;
-
-    }
-    
-    .header__ExploreButton{
-        width: 70%;
-        margin: 1% 0;
-        margin-left: 5%;
-        border:solid 1px #fff;
-        color: #fff;
-    }
-    
-    /* -------------------------BORDE DEL HEADER*/
-    .header__waves{
-    padding-top: 0;
-
-    }
-
-    /* ----------------------------------------------------------------- */
-    /* ----------------------------------------------RESPONSIVE DEL MAIN */
-    /* ----------------------------------------------------------------- */
-
-     /* -------------------------INDEX*/
-     .main__indexContainer{
-        margin: $margin-desktop-container;
-    }
-
-
-    .main__categories__category{
-        padding-bottom: 1%;
-    }
-
-    .index__tittle{
-        font-size: 300%;
-    }
-
-
-    /* -------------------------TEXTOS DEL MAIN*/ 
-    main{
-        &#index{
-            h2{/* Titulos H2 */
-                font-size: 400%;
-            }         
-        }
-        &#sobreNosotros ,&#contacto, &#ayuda, &#furnitures{
-            h1{/* Titulos H1 */
-                font: $h1-tablet;
-            }
-            h2{
-                font: $h2-tablet;
-            }
-        }     
-    } 
-
-
+@media (min-width:980px) { }
 
     /* ----------------------------------------------------------------- */
     /* ---------------------------------------------- RESPONSIVE PAG 404 */
@@ -163,11 +46,6 @@
             }
         }     
     }
-
-
-    /* ----------------------------------------------------------------- */
-    /* ------------------------------------------ RESPONSIVE DEL CARRITO */
-    /* ----------------------------------------------------------------- */
 
 
 

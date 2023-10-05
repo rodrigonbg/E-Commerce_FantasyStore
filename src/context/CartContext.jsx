@@ -1,21 +1,40 @@
 import { useState, createContext } from "react";
+import { collection, addDoc, setDoc, doc} from "firebase/firestore" 
+import { db } from "../services/config"
 import './CartContext.scss'
 import Swal from 'sweetalert2'
 import Toastify from 'toastify-js'
 import "toastify-js/src/toastify.css"
+import { useContext } from 'react'
+import { UserContext } from '../context/UserContext/UserContext'
 
 export const CartContext = createContext({ /* el valor por defoult del context del carrito es un objeto con esta información */
-    cart: [],
-    totalPrice: 0,
-    totalItems: 0,
+    cart: localStorage.getItem("cart")? JSON.parse(localStorage.getItem("cart")) : [], /* Si hay carrito en local storage lo recupero, sino array vacio */
+    totalPrice: localStorage.getItem("totalPrice")? JSON.parse(localStorage.getItem("totalPrice")) : 0, /* Si hay totalPrice en local storage lo recupero, sino 0 */
+    totalItems: localStorage.getItem("totalItems")? JSON.parse(localStorage.getItem("totalItems")) : 0, /* Si hay totalItem en local storage lo recupero, sino 0 */
 })
 
 export const CartContextProvider = ({children}) => {
     /* usestate para almacentar el carrito de productos cargado por el cliente */
-    const [cart, setCart] = useState([])
-    const [totalPrice, setTotalPrice] = useState(0)
-    const [totalItems, setTotalItems] = useState(0)
+    const [cart, setCart] = useState(localStorage.getItem("cart")? JSON.parse(localStorage.getItem("cart")) : [])
+    const [totalPrice, setTotalPrice] = useState(localStorage.getItem("totalPrice")? JSON.parse(localStorage.getItem("totalPrice")) : 0)
+    const [totalItems, setTotalItems] = useState(localStorage.getItem("totalItems")? JSON.parse(localStorage.getItem("totalItems")) : 0)
+   /*  const [IdCompra, setIdCompra] = useState() */
+    const {correo} = useContext(UserContext)
 
+    const updateLocalStorage = () =>{
+        let updatedCart = JSON.stringify(cart)
+        let updatedTotalPrice = JSON.stringify(totalPrice)
+        let updatedTotalItems = JSON.stringify(totalItems)
+        localStorage.removeItem("cart")
+        localStorage.removeItem("totalPrice")
+        localStorage.removeItem("totalItems")
+        localStorage.setItem("cart", updatedCart)
+        localStorage.setItem("totalPrice", updatedTotalPrice)
+        localStorage.setItem("totalItems", updatedTotalItems)
+    }
+    /* actualizo el local storage. */
+    updateLocalStorage()
 
     /* metodos para las funcionalidades del carrito */
     const addItem = (item, cantidad) => {
@@ -35,6 +54,10 @@ export const CartContextProvider = ({children}) => {
         }
         item.onSale ? setTotalPrice(prev => prev + (((100-item.descuento)*item.precio)/100) * cantidad) : setTotalPrice(prev => prev + (item.precio * cantidad))
         setTotalItems(prev => prev + cantidad)
+
+        /* actualizo el local storage. */
+        updateLocalStorage()
+
         Toastify({
             text: `producto "${item.nombre}" agregado al carrito (cantidad: ${cantidad})`,
             duration: 3500,
@@ -54,6 +77,9 @@ export const CartContextProvider = ({children}) => {
         removedItem.item.onSale ? setTotalPrice(prev => prev - (((100-removedItem.item.descuento)*removedItem.item.precio)/100) * removedItem.cantidad) : setTotalPrice(prev => prev - removedItem.item.precio * removedItem.cantidad)
         setTotalItems (prev => prev - removedItem.cantidad)
 
+        /* actualizo el local storage. */
+        updateLocalStorage()
+
         Toastify({
             text: `producto "${removedItem.item.nombre}"quitado del carrito`,
             duration: 3500,
@@ -66,54 +92,23 @@ export const CartContextProvider = ({children}) => {
     }
 
     const clearCart = () => {
-        Swal.fire({
-            icon: 'question',
-            title: '¿Seguro que desea vaciar el carrito?',
-            showDenyButton: true,    
-            confirmButtonText: 'Vaciar',
-            denyButtonText: 'Cancelar',
-            customClass: {
-                confirmButton:"btnConfirm",
-                denyButton: "btnDeny",
-                icon: "iconQuestion",
-                title: "titleText",  
-            }
-        }).then((result) => {
-            if (result.isConfirmed) {
-                Swal.fire({
-                    icon: 'success',
-                    title: 'Carrito vaciado!',    
-                    showConfirmButton:false,
-                    timer: 2000,
-                    customClass: {
-                        title: "titleText",  
-                    }
-                })
-                setCart([])
-                setTotalPrice(0)
-                setTotalItems(0)
-                window.scroll({top: 0})
-                Toastify({
-                    text: `El carrito se ha vaciado`,
-                    duration: 3500,
-                    close: true,
-                    gravity: "bottom", // `top` or `bottom`
-                    position: "left", // `left`, `center` or `right`
-                    stopOnFocus: true, // Prevents dismissing of toast on hover
-                    className: "mensajeToastify quitado"
-                  }).showToast();
-            }else if (result.isDenied) {
-                Swal.fire({
-                    icon:'success',
-                    title: 'Genial',
-                    showConfirmButton: false,
-                    timer: 1000,
-                    customClass: {
-                        title: "titleText",  
-                    }
-                })
-            }
-        })
+        setCart([])
+        setTotalPrice(0)
+        setTotalItems(0)
+
+        /* actualizo el local storage. */
+        updateLocalStorage()
+                
+        window.scroll({top: 0})
+        Toastify({
+            text: `El carrito se ha vaciado`,
+            duration: 3500,
+            close: true,
+            gravity: "bottom", // `top` or `bottom`
+            position: "left", // `left`, `center` or `right`
+                stopOnFocus: true, // Prevents dismissing of toast on hover
+                className: "mensajeToastify quitado"
+        }).showToast();   
     }
 
     const increaseAmount = (id) => {
@@ -130,6 +125,10 @@ export const CartContextProvider = ({children}) => {
             setCart(updatedCart)
             setTotalItems (prev => prev + 1 )
             cart[index].item.onSale ? setTotalPrice(prev => prev + (((100-cart[index].item.descuento)*cart[index].item.precio)/100)*1 ) : setTotalPrice(prev => prev + (cart[index].item.precio * 1))
+
+            /* actualizo el local storage. */
+            updateLocalStorage()
+
         }else{
             Toastify({
                 text: `El stock del producto "${item.item.nombre}" es de ${item.item.stock}`,
@@ -157,6 +156,10 @@ export const CartContextProvider = ({children}) => {
             setCart(updatedCart)
             setTotalItems (prev => prev - 1 )
             cart[index].item.onSale ? setTotalPrice(prev => prev - (((100-cart[index].item.descuento)*cart[index].item.precio)/100)*1 ) : setTotalPrice(prev => prev + (cart[index].item.precio * 1))
+        
+            /* actualizo el local storage. */
+            updateLocalStorage()
+
         }else{
             Toastify({
                 text: `El stock no puede bajar de una unidad.`,
@@ -170,8 +173,41 @@ export const CartContextProvider = ({children}) => {
         }
     }
 
+    /* funciones para las compras de productos */
+    const buyItems = async (cart) =>{
+        return addDoc(collection(db, 'compras'),{
+            compra : cart,
+            usuario: correo
+        })
+        .then((compraRef) => {
+            Swal.fire({
+                icon: 'success',
+                title: 'Comprado con exito!!',    
+                showConfirmButton:false,
+                timer: 2000,
+                customClass: {
+                    title: "titleText",  
+                }
+            })
+            clearCart()
+            const idCompra = compraRef.id
+            return idCompra
+        })
+        .catch(()=>{
+            Swal.fire({
+                icon: 'error',
+                title: 'Ocurrio un error al realizar la compra!!',    
+                showConfirmButton:false,
+                timer: 2000,
+                customClass: {
+                    title: "titleText",  
+                }
+            })
+        })
+    }
+
     return(
-        <CartContext.Provider value={{cart, totalPrice, totalItems, addItem, removeItem, clearCart, increaseAmount, decreaseAmount }}>
+        <CartContext.Provider value={{cart, totalPrice, totalItems, addItem, removeItem, clearCart, increaseAmount, decreaseAmount, buyItems }}>
         {children}
         </CartContext.Provider>
     )

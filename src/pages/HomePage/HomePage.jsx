@@ -3,7 +3,7 @@ import ItemOnSaleList_Container from '../../components/ItemList_Container/ItemOn
 import ItemFullPriceList_Container from '../../components/ItemList_Container/ItemFullPriceList_Container'
 
 
-const HomePage = (props) => {
+const HomePage = () => {
   return (
     <div>
         <SectionTitle text={'Items On Sale'} />

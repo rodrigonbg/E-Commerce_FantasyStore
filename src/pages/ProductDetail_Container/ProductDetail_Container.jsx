@@ -1,18 +1,25 @@
 import React from 'react'
 import Product_Detail from '../../components/Product_Detail/Product_Detail'
 import { useEffect, useState } from 'react'
-import { getProduct } from '../../productos'
 import { useParams } from 'react-router-dom'
+import {getDoc, doc} from "firebase/firestore" 
+import { db } from "../../services/config"
 
 
 const ProductDetail_Container = () => {
   const [product, setProduct] = useState(null)
-  const { id } = useParams();
+  const { idItem } = useParams();
 
   useEffect(()=>{
-    getProduct(+id)
-      .then(prod => setProduct(prod)) 
-  }, [id])
+    const nuevoDoc = doc(db, 'productos', idItem)
+    getDoc(nuevoDoc)
+      .then(res => {
+        const data = res.data()
+        const nuevoProducto = {id: res.id, ...data}
+        setProduct(nuevoProducto)
+      })
+      .catch(e => <p>Error al encontrar el producto</p>)
+  },[idItem])
 
   return (
     <Product_Detail {...product} />

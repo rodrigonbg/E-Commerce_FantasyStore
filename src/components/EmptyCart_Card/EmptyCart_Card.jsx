@@ -4,8 +4,8 @@ import carita from '../../icons/caraTriste.png'
 
 const EmptyCart_Card = () => {
   return (
-    <div class="cardCarritoVacio">
-        <div class="mensaje">
+    <div className="cardCarritoVacio">
+        <div className="mensaje">
             <img src={carita} alt="carita triste"/>
             <p>El Carrito de compras se encuentra vacío.</p>
             <p>Agregue algunos productos antes de realizar la compra.</p>

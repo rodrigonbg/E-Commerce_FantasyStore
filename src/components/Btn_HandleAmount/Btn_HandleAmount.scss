@@ -1,0 +1,26 @@
+@import "../../styles/variables";
+
+.cantidadProdCarrito{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    .btn{
+        display: flex;
+        align-items: center;
+        padding: 0%;
+        padding: 20%;
+        border-radius: 50px;
+        width: 2%;
+        height: 20px;
+        border-color: $primary-color;
+        font-size: smaller;
+        &:active{
+            background-color: $primary-color;
+            color: white;
+        }
+    }
+    span{
+        font-size: smaller;
+        margin: 6%;
+    }
+}

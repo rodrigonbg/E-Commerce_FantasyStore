@@ -1,3 +1,5 @@
+import { collection, addDoc, setDoc, doc} from "firebase/firestore" 
+import { db } from "./services/config"
 const products = [
     {
         id: 1,
@@ -9,7 +11,7 @@ const products = [
         precio: 1000,
         onSale: true,
         descuento: 50,
-        stock: 10,
+        stock: 100,
         alt: "Macetas negras",
         cantiadadEnCarrito: 0
     },
@@ -23,7 +25,7 @@ const products = [
         precio: 1000,
         onSale: true,
         descuento: 30,
-        stock: 10,
+        stock: 120,
         alt: "Macetas blancas",
         cantiadadEnCarrito: 0
     },
@@ -51,7 +53,7 @@ const products = [
         precio: 1999,
         onSale: true,
         descuento: 29,
-        stock: 10,
+        stock: 80,
         alt: "biblioteca",
         cantiadadEnCarrito: 0
     },
@@ -65,7 +67,7 @@ const products = [
         precio: 1899,
         onSale: true,
         descuento: 29,
-        stock: 10,
+        stock: 15,
         alt: "Estantería",
         cantiadadEnCarrito: 0
     },
@@ -93,7 +95,7 @@ const products = [
         precio: 2599,
         onSale: true,
         descuento: 15,
-        stock: 10,
+        stock: 100,
         alt: "Boxes de decoración",
         cantiadadEnCarrito: 0
     },
@@ -107,7 +109,7 @@ const products = [
         precio: 1000,
         onSale: true,
         descuento: 5,
-        stock: 10,
+        stock: 75,
         alt: "Lampara de pie",
         cantiadadEnCarrito: 0
     },
@@ -135,7 +137,7 @@ const products = [
         precio: 1000,
         onSale: false,
         descuento: 0,
-        stock: 10,
+        stock: 18,
         alt: "Butaca de madera",
         cantiadadEnCarrito: 0
     },
@@ -149,7 +151,7 @@ const products = [
         precio: 1299,
         onSale: false,
         descuento: 0,
-        stock: 10,
+        stock: 620,
         alt: "Planta monstera",
         cantiadadEnCarrito: 0
     },
@@ -163,7 +165,7 @@ const products = [
         precio: 1999,
         onSale: false,
         descuento: 0,
-        stock: 10,
+        stock: 321,
         alt: "Estantería de madera",
         cantiadadEnCarrito: 0
     },
@@ -177,7 +179,7 @@ const products = [
         precio: 2599,
         onSale: false,
         descuento: 0,
-        stock: 10,
+        stock: 32,
         alt: "Mesita",
         cantiadadEnCarrito: 0
     },
@@ -191,7 +193,7 @@ const products = [
         precio: 999,
         onSale: false,
         descuento: 0,
-        stock: 10,
+        stock: 156,
         alt: "Planta"
     },
     {
@@ -218,7 +220,7 @@ const products = [
         precio: 15999,
         onSale: false,
         descuento: 0,
-        stock: 10,
+        stock: 6,
         alt: "Mesa de madera",
         cantiadadEnCarrito: 0
     },
@@ -269,3 +271,23 @@ export const getProductsByCategory = (idCategory)=>{
         },1000)
     })
 }
+
+
+
+export function cargarDatos(){
+    products.map(prod => {
+        setDoc(doc(db, "productos", `${prod.id}`), {
+            nombre: prod.nombre,
+            descripcion: prod.descripcion,
+            categoria: prod.categoria,
+            idCategoria: prod.idCategoria,
+            img: prod.img,
+            precio: prod.precio,
+            onSale: prod.onSale,
+            descuento: prod.descuento,
+            stock: prod.stock,
+            alt: prod.alt
+        })
+    })
+}
+
