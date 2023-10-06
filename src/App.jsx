@@ -20,6 +20,7 @@ import wavesOfHeader from '../src/imgs/Waves-Header.png'
 import Header_hompage from "./components/Header_hompage/Header_hompage";
 import Checkout from "./pages/Checkout/Checkout";
 import { UserContextProvider } from "./context/UserContext/UserContext";
+import Page404 from "./pages/404/Page404";
 
 function App() {
 
@@ -41,6 +42,7 @@ function App() {
             <Route path={'/login'} element={<img className='waves_Header' src={wavesOfHeader} alt="Borde del header" /> }/>
             <Route path={'/singup'} element={<img className='waves_Header' src={wavesOfHeader} alt="Borde del header" /> }/>
             <Route path={'/products/:idItem'} element={<img className='waves_Header' src={wavesOfHeader} alt="Borde del header" /> }/>
+            <Route path={'*'} element={<img className='waves_Header' src={wavesOfHeader} alt="Borde del header" /> }/>
           </Routes>
         </header> 
 
@@ -57,7 +59,7 @@ function App() {
             <Route path='/login' element={<LogIn/>} />
             <Route path='/singup' element={<SingUp />} />
             <Route path='/products/:idItem' element={<ProductDetail_Container />} />
-            <Route path='*' element={ <p> Page 404</p> } />
+            <Route path='*' element={ <Page404/> } />
           </Routes>
         </main>
 

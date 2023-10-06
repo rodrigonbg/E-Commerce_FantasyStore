@@ -1,5 +1,5 @@
 import { useState, createContext } from "react";
-import { collection, addDoc, setDoc, doc, query, getDocs, getDoc, where, limit} from "firebase/firestore" 
+import { collection, addDoc, doc, query, getDocs, getDoc, where, limit} from "firebase/firestore" 
 import './UserContext.scss'
 import { db } from '../../services/config'
 import Swal from 'sweetalert2'
@@ -38,7 +38,7 @@ export const UserContextProvider = ({children}) => {
             nombre: user.nombre,
             apellido: user.apellido,
             telefono: user.telefono,
-            correo: user.correo,
+            correo: user.correo.toLowerCase(),
             fechaNac: user.fechaNac,
             contraseña: user.contraseña
         })
@@ -108,10 +108,9 @@ export const UserContextProvider = ({children}) => {
 
     const findUser = async (mail, pass) => {
         const user =    query(collection(db, 'usuarios'),
-                        where('correo', '==', `${mail}`),
+                        where('correo', '==', `${mail.toLowerCase()}`),
                         where('contraseña', '==', `${pass}`),
                         limit(1))
-
         await getDocs(user)
             .then((user)=>{
                 if(user.size !== 0){
@@ -155,11 +154,44 @@ export const UserContextProvider = ({children}) => {
             })
     }   
 
-    const singUpUser = (user) => {
-        /* Lo guardo en la base de datos */
-        uploadUser(user)
-        /* inicio sesion */
-        logIn(user)
+    const singUpUser = async (user) => {
+        
+        /* verifico que el mail no esté registrado */
+        const userRef = query(collection(db, 'usuarios'),where('correo', '==', `${user.correo.toLowerCase()}` ),limit(1))
+        await getDocs(userRef)
+            .then((res)=>{
+                if(res.size !== 0){/* Si la respuesta trae un doc con ese mail muestro usuario registrado */
+                    res.forEach((doc)=>{
+                        Swal.fire({
+                            icon: 'error',
+                            title: `El correo ${doc.data().correo} ya está registrado`,    
+                            confirmButtonText: 'Aceptar',
+                            customClass: {
+                                title: "titleText",  
+                            }
+                        })
+                    })
+                }else{
+                    /*si no, Lo guardo en la base de datos */
+                    uploadUser(user)
+                    /* inicio sesion */
+                    logIn(user)
+                }
+            })
+            .catch((error)=>{
+                console.log(error)
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Error al verificar usuarios en la base de datos.',   
+                    confirmButtonText: 'Aceptar',
+                    customClass: {
+                        confirmButton:"btnConfirm",
+                        icon: "iconQuestion",
+                        title: "titleText",  
+                    }
+                })
+            })
+            
     }
 
 

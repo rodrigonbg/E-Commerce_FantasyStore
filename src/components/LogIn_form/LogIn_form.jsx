@@ -9,24 +9,32 @@ import React from 'react'
 import SectionTitleH2 from '../SectionTitleH2/SectionTitleH2'
 
 const LogIn_form = ({children}) => {
-  const [correo, setCorreo] = useState(null)
-  const [pass, setPass] = useState(null)
+  const [correo, setCorreo] = useState('')
+  const [pass, setPass] = useState('')
+  const [error, setError] = useState(null)
 
   const {findUser} = useContext(UserContext)
 
   const handleCorreo = (value) =>{
     setCorreo(value)
+    setError(null)
   }
   const handlePass = (value) =>{
     setPass(value)
+    setError(null)
   }
 
-  const handleSubmit = (e) =>{
+  const handleSubmit = async (e) =>{
     e.preventDefault()
-    findUser(correo, pass)
 
-    handleCorreo(null)
-    handlePass(null)
+    if (!correo ||  !pass){
+      setError(<p className='errorText'>Ningun campo puede quedar vacio</p>)
+    }else{
+      await findUser(correo, pass)
+
+      handleCorreo('')
+      handlePass('')
+    }
   }
 
   return (
@@ -36,13 +44,13 @@ const LogIn_form = ({children}) => {
 
       <form onSubmit={(e) => handleSubmit(e)}>
         <div className="mb-3">
-          <input type="mail" className="form-control" id="Correo" placeholder="Correo Electronico" onChange={(e) => handleCorreo(e.target.value)} />
+          <input type="email" className="form-control" id="Correo" placeholder="Correo Electronico" value={correo} onChange={(e) => handleCorreo(e.target.value)} />
         </div>
         <div className="mb-3">
-          <input type="password" className="form-control" id="Correo" placeholder="Contraseña" onChange={(e) => handlePass(e.target.value)} />
+          <input type="password" className="form-control" id="Correo" placeholder="Contraseña" value={pass} onChange={(e) => handlePass(e.target.value)} />
         </div>
+        {(error !== null)&& error}
         <button type="submit" className="btn btn-primary" >Iniciar Sesion</button>
-        {/* <p>Si aun no tenes cuenta, clik <Link>aqui</Link> para registrarte</p> */}
       </form>
     </div>
   )

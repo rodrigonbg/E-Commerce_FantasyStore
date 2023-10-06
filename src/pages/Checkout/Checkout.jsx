@@ -23,11 +23,13 @@ const Checkout = () => {
 
     const handlePurchase = async (cart) =>{
         const IdCompra = await buyItems(cart)
-            console.log(IdCompra)
-            setIdCompra(IdCompra)
+        console.log (IdCompra)
+            if (IdCompra !== undefined){
+                setIdCompra(IdCompra)
 
-            localStorage.removeItem('IdCompra')
-            localStorage.setItem('IdCompra', JSON.stringify(IdCompra))
+                localStorage.removeItem('IdCompra')
+                localStorage.setItem('IdCompra', JSON.stringify(IdCompra))
+            }  
     }
 
     const handleVolver = () =>{
