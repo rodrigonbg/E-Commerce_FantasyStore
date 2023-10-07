@@ -23,10 +23,10 @@ const Category = () => {
         <div>
             <SectionTitle text={titulo}/>
 
-            <SectionTitleH2 text={'Items On Sale'}/>
+            <SectionTitleH2 text={'Productos en Descuento'}/>
             <ItemOnSaleList_Container />
 
-            <SectionTitleH2 text={'Items Full Price'}/>
+            <SectionTitleH2 text={'Destacados'}/>
             <ItemFullPriceList_Container/>
         </div>
     )

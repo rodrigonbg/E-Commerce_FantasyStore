@@ -5,11 +5,12 @@ import { useEffect, useState } from 'react'
 
 import { CartContext } from '../../context/CartContext'
 import { useContext } from 'react'
+import SectionTitleH2 from '../SectionTitleH2/SectionTitleH2'
 
 const Product_Detail = ({id, nombre, descripcion, categoria, img, precio, onSale, descuento, stock, alt }) => {
 
   const item = {id, nombre, descripcion, categoria, img, precio, onSale, descuento, stock, alt }
-  const [amount, setAmount] = useState(1)/* Cantidad de unidades a agregar al carrito */
+  const [amount, setAmount] = useState(stock < 1? 0 : 1)/* Cantidad de unidades a agregar al carrito */
   const onSalePrice = (((100-descuento)*precio)/100);
 
   const {addItem} = useContext(CartContext)
@@ -34,46 +35,49 @@ const Product_Detail = ({id, nombre, descripcion, categoria, img, precio, onSale
         <Link to="/" className="goBackLink">{/*  */}
           {' <-- Go Back'}
         </Link>
-        <section className="">
 
-          <picture className="">
-            {}
+        <article>
+          <picture className="imgSection">
             <div className="saleTag" > {/* ETIQUETA DE DESCUENTO */}
               {onSale? <span className="badge rounded-0"><i className="fa-solid fa-arrow-down"></i>{descuento}%</span>: <></> }
             </div>
             <img src={img} alt={alt}/>
           </picture>
 
-          <article className="">
-                  
-            <div className="infoSection">
-              <h2 className="productName">{nombre}</h2>
+          <div className=''>
+            <section className="infoSection">    
+              <SectionTitleH2 className={'productName'} text={nombre}/>  
               <p className='productDescription'>{descripcion}</p>
-              <p className='productCategory'>{categoria}</p> 
-              <div>
+              <p className='productCategory'>Categoría: {categoria}</p> 
+            </section>
+
+            <section className='buttonSection'>
+              <div className='precios' > 
                 <p>Precio por unidad: </p>
                 <strong>${onSale? <>{onSalePrice} <span className='oldPrice'>{precio}</span>  </>: precio }</strong>
               </div>
-              <div>
+              <div className='precios'>
                 <p>Precio en total: </p>
                 <strong>${onSale? (onSalePrice * amount).toFixed(2) : precio * amount }</strong>
-              </div>    
-            </div>
-
-            <div className='buttonSection'>
+              </div>  
+              
+              {stock >0 &&
               <div className='handelAmountSection'>
                 <button onClick={decreaseAmount}>-</button>
                 <strong>{amount}</strong>
                 <button onClick={increaseAmount}>+</button>
               </div>
-              <p>Stock disponible: {stock}</p>
-              <button className='cartButton' onClick={()=>{ addItem(item, amount)}} >Add to cart</button>
-            </div>
+              }
+              <p className='stock' >Stock disponible: {stock}</p>
 
-          </article>
-
-        </section>
-
+              { stock > 0?
+              <button className='cartButton' onClick={()=>{ addItem(item, amount)}} >Agregar al carrito</button>
+              :
+              <button className='cartButton sinStock' disabled >Sin Stock</button>
+              }
+            </section>
+          </div>
+        </article>
       </div> 
   )
 }

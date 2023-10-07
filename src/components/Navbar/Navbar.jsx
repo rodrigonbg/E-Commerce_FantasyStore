@@ -11,11 +11,11 @@ import Cart_Icon from '../Cart_Icon/Cart_Icon'
 import DropdownMenu from '../DropdownMenu/DropdownMenu'
 import LoginButton from '../LoginButton/LoginButton'
 
-export const routesLink = [ {text:'HomePage', path:'/'},
-                            {text:'Categories', path:'/categories'},
-                            {text:'About Us', path:'/about_us'},
-                            {text:'Help', path:'/help'},
-                            {text:'Contact', path:'/contact'}]
+export const routesLink = [ {text:'Inicio', path:'/'},
+                            {text:'Categorias', path:'/categories'},
+                            {text:'Nosotros', path:'/about_us'},
+                            {text:'Ayuda', path:'/help'},
+                            {text:'Contacto', path:'/contact'}]
 
 const Navbar = () => {
     
@@ -52,7 +52,6 @@ const Navbar = () => {
                     <LoginButton className="loginButton"/>
                 </span>
             </section>
-        
     )
 }
 

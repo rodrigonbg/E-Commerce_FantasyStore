@@ -158,7 +158,7 @@ export const UserContextProvider = ({children}) => {
         
         /* verifico que el mail no esté registrado */
         const userRef = query(collection(db, 'usuarios'),where('correo', '==', `${user.correo.toLowerCase()}` ),limit(1))
-        await getDocs(userRef)
+       return await getDocs(userRef)
             .then((res)=>{
                 if(res.size !== 0){/* Si la respuesta trae un doc con ese mail muestro usuario registrado */
                     res.forEach((doc)=>{

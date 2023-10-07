@@ -4,192 +4,268 @@
     border: solid 1px #8B9E70;
     text-decoration: none;
     color:#8B9E70;
-
+    width: 150px;
+    margin-bottom: 20px;
     &:hover{
         background-color:#8B9E70 ;
         color: white;
     }
 }
 
-.product_Detail{
-    border-radius: 30px;
-    margin-top: 5vh;
-    padding: 0 5%;
-    height: 100%;
-    section{
-
-        display: flex;
-        justify-content: space-between;
-        height: 100%;
-        width: 80;
-        padding: 2% 0;
-        picture{
-            /* offset-x | offset-y | blur-radius | spread-radius | color */
-            box-shadow: 10px 10px 10px 1px rgba(0, 0, 0, 0.2);
-            border-radius: 30px;
-            display: flex;
-            justify-content: center;
-            width: 40%;
-            position: relative;
-            img{
-                border-radius: 30px;
-                width: 100%;
-                
+article{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    .imgSection{
+        position: relative;
+        margin: 5% 0;
+        .saleTag{
+            .badge{
+                background: #000;
+                font-size: medium;
+                padding: 10px 24px;
+                top: 0;
+                position: absolute;
+                &:before{
+                    border-width: 20px 0 0 10px;
+                    border-color: transparent transparent transparent #000;
+                    content: "";
+                    position: absolute;
+                    right: -8px;
+                    width: 0;
+                    bottom: 0;
+                    border-style: solid
+                }
+                &:after{
+                    border-width: 20px 8px 0 10px;
+                    border-color:#000 transparent transparent;
+                    content: "";
+                    position: absolute;
+                    right: -8px;
+                    width: 0;
+                    top: 0;
+                    border-style: solid
+                }  
             }
         }
-
-        article{
+        img{   
             /* offset-x | offset-y | blur-radius | spread-radius | color */
             box-shadow: 10px 10px 10px 1px rgba(0, 0, 0, 0.2);
             border-radius: 30px;
+            max-width: 100%
+
+        }
+    }
+    div{
+
+        .infoSection{
+            /* offset-x | offset-y | blur-radius | spread-radius | color */
+            box-shadow: 10px 10px 10px 1px rgba(0, 0, 0, 0.2);
+            border-radius: 30px;
+            padding: 2%;
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: space-between;
-            width: 55%;
-
-            div{
-                display: flex;
-                width: 80%;
-                margin: 10px 2% 5% 2%;
-
-                &.infoSection{
-                    flex-direction: column;
-                    align-items: center;
-                    justify-content: space-between;
-                    text-align: center;
-                    height: 60%;
-                    font-family: "Dosis", sans-serif;
-                    .productName{
-                        width: 100%;
-                        margin-bottom: 20px;
-                        border-bottom: solid 1px #8B9E70;
-                        
-                        color: #8B9E70
-                    }
-                    .productDescription{
-                        overflow-y: scroll;
-                        font-size: larger;
-                        width: 100%;
-                        padding: 0 2%;
-                        height: 70%;
-                    }
-                    .productCategory{
-                        color: gray;
-                        width: 100%;
-                        margin: 0 0 3% 0;
-                    }
-                    div{
-                        display: flex;
-                        justify-content: space-around;
-                        align-items: center;
-                        text-align:right;
-                        border-bottom:solid 1px #8B9E70;
-                        width: 100%;
-                        padding: 0 2%;
-                        margin: 0;
-                        p{
-                            margin: 3% 0 0 0;
-                        }
-                        strong{
-                            margin: 2% 0 0 0;
-                            .oldPrice{
-                                padding-left: 10px;
-                                font-size: medium;
-                                color: #8B9E70;
-                                text-decoration: line-through;
-                                
-                            }
-                        }
-                    };
-                }
-
-                &.buttonSection{
-                    display: flex;
-                    align-items: center;
-                    justify-content: space-between;
-                    height: 30%;
-                    flex-direction: column;
-                    font-family: "Dosis", sans-serif;
-                    .handelAmountSection{
-                        margin: 0;
-                        display: flex;
-                        align-items: center;
-                        justify-content:center;
-                        width: 100%;
-                        button{
-                            font-size: larger;
-                            border-radius: 50px;
-                            width: 80px;
-                            height: 80px;
-                            border: solid 1px #8B9E70;
-                            background-color: white;
-                            &:active{
-                                background-color: #8B9E70;
-                                color: white;
-                            }
-                            &:hover{
-                                font-size: x-large;
-                            }
-                        }
-                        strong{
-                            width: 20px;
-                            margin: 0 1%;
-                            padding: 0 5%;
-                        }
-                    }
-
-                    .cartButton{
-                        width: 100%;
-                        background-color: #8B9E70;
-                        padding: 2% 0;
-                        border-style: none;
-                        border-radius: 30px;
-                        color: white;
-                        &:hover{
-                            background-color: #545f45;
-                        }
-                    }
-
-
-
-                }
+            width: 100%;
+            height: 100%;
+            max-height: 50vh;
+            margin: 5% 0;
+        
+            .productName{
+                width: 90%;
+                margin-bottom: 20px;
+                border-bottom: solid 1px #8B9E70;
+                color: #8B9E70
             }
-
+            .productDescription{
+                overflow-y: scroll;
+                font-size: medium;
+                text-align: center;
+                width: 100%;
+                padding: 0 2%;
+                height: 70%;
+            }
+            .productCategory{
+                color: gray;
+                width: 100%;
+                margin: 0 0 3% 0;
+                text-align: center;
+            }
         }
         
-
-
+        .buttonSection{
+            /* offset-x | offset-y | blur-radius | spread-radius | color */
+            box-shadow: 10px 10px 10px 1px rgba(0, 0, 0, 0.2);
+            border-radius: 30px;
+            padding: 2% 5%;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            height: 100%;
+            width: 100%;
+            flex-direction: column;
+            font-family: "Dosis", sans-serif;
+            .precios{
+                display: flex;
+                flex-direction: row;
+                justify-content: space-evenly;
+                align-items: center;
+                text-align:right;
+                border-bottom:solid 1px #8B9E70;
+                width: 100%;
+                padding: 0 2%;
+                margin: 0;
+                p{
+                    margin: 2% 0 0 0;
+                }
+                strong{
+                    margin: 2% 0 0 0;
+                    .oldPrice{
+                        padding-left: 10px;
+                        font-size: medium;
+                        color: #8B9E70;
+                        text-decoration: line-through;
+                        
+                    }
+                }
+            }
+        
+            .handelAmountSection{
+                margin: 5% 0;
+                display: flex;
+                flex-direction: row;
+                align-items: center;
+                justify-content:center;
+                button{
+                    font-size: larger;
+                    border-radius: 50px;
+                    width: 70px;
+                    height: 70px;
+                    border: solid 1px #8B9E70;
+                    background-color: white;
+                    &:active{
+                        background-color: #8B9E70;
+                        color: white;
+                    }
+                    &:hover{
+                        background-color: #8B9E70;
+                        color: white;
+                    }
+                }
+                strong{
+                    width: 30px;
+                    margin: 0 2%;
+                    padding: 0 5%;
+                    text-align: center;
+                }
+            }
+        
+            .stock{
+                margin-top: 2%;
+            }
+            .cartButton{
+                width: 100%;
+                background-color: #8B9E70;
+                padding: 2% 0;
+                margin-bottom: 2%;
+                border-style: none;
+                border-radius: 30px;
+                color: white;
+                &:hover{
+                    background-color: #545f45;
+                }
+            }
+        }
     }
 }
 
-.saleTag{
+.sinStock{
+    background-color: rgba(165, 118, 118, 0.836) !important;
+}
 
-    .badge{
-        background: #000;
-        font-size: medium;
-        padding: 10px 24px;
-        top: 0;
-        position: absolute;
-        &:before{
-            border-width: 20px 0 0 10px;
-            border-color: transparent transparent transparent #000;
-            content: "";
-            position: absolute;
-            right: -8px;
-            width: 0;
-            bottom: 0;
-            border-style: solid
+/* ------------------------------------------------- */
+/* ---------------------------------- RESPONSIVE---- */
+/* ------------------------------------------------- */
+@media (min-width:980px) { 
+    .product_Detail{
+        width: 100%;
+        height: 70vh;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        article{
+            padding: 0 5%;
+            flex-direction: row;
+            height: 100%;
+            .imgSection{
+                height: 100%;
+                width: 35%;
+                margin: 0;
+                .saleTag{
+                    margin: 0;
+                    display: block;
+                }
+                img{
+                    width: auto;
+                    height: 100%;
+                }
+            }
+            
+            div{
+                display: flex;
+                flex-direction: column;
+                justify-content: space-between;
+                align-items: end;
+                margin-left: 2%;
+                
+                width:65%;
+                .infoSection{
+                    padding: 1% 5%;
+                    margin: 0 0 0 2%;
+                    height: 70%;
+                    .productName{
+        
+                    }
+                    .productDescription{
+        
+                    }
+        
+                }
+                
+                .buttonSection{
+                padding: 1% 5%;
+                margin: 6% 0 0 2%;
+                height: 30%;
+                    .precios{
+        
+                        p{
+        
+                        }
+                        strong{
+                            .oldPrice{  
+                            }
+                        }
+                    }
+                
+                    .handelAmountSection{
+                        margin: 1% 0;
+                        button{
+        
+                        }
+                        strong{
+        
+                        }
+                    }
+                
+                    .stock{
+                
+                    }
+                    .cartButton{
+        
+                    }
+                }
+            }
         }
-        &:after{
-            border-width: 20px 8px 0 10px;
-            border-color:#000 transparent transparent;
-            content: "";
-            position: absolute;
-            right: -8px;
-            width: 0;
-            top: 0;
-            border-style: solid
-        }  
     }
 }

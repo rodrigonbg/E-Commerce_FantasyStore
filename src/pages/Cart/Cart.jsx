@@ -82,11 +82,11 @@ const Cart = () => {
           <>
             <section className="pieLista">{/* si hay prods en el carrito */}
               <button className="btnVaciarCarrito" onClick={handleClearCart}>Vaciar Carrito</button> 
-              <p className="importeTotal"> con un total de {totalItems} productos, el importe total a abonar es de: <strong> ${totalPrice.toFixed(2)} </strong> </p>
+              <p className="importeTotal"> Con un total de {totalItems} productos, el importe total a abonar es de: <strong> ${totalPrice.toFixed(2)} </strong> </p>
             </section> 
             <div className="botonesCarrito">
               <Link to={'/'} className="Link">Seguir comprando</Link>
-              <Link to={'/cart/checkout'} className="Link">Realizar compra</Link>
+              <Link to={'/cart/checkout'} className="Link">Checkout</Link>
             </div>
           </>
           : 

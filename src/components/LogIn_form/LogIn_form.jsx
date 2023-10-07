@@ -7,11 +7,14 @@ import { UserContext } from '../../context/UserContext/UserContext'
 
 import React from 'react'
 import SectionTitleH2 from '../SectionTitleH2/SectionTitleH2'
+import { Loading } from '../Loading/Loading'
 
 const LogIn_form = ({children}) => {
   const [correo, setCorreo] = useState('')
   const [pass, setPass] = useState('')
   const [error, setError] = useState(null)
+
+  const [loading, setLoading] = useState(false)
 
   const {findUser} = useContext(UserContext)
 
@@ -25,6 +28,7 @@ const LogIn_form = ({children}) => {
   }
 
   const handleSubmit = async (e) =>{
+    setLoading(true)
     e.preventDefault()
 
     if (!correo ||  !pass){
@@ -42,6 +46,9 @@ const LogIn_form = ({children}) => {
 
       {children}
 
+      {loading?
+        <Loading/>
+        :
       <form onSubmit={(e) => handleSubmit(e)}>
         <div className="mb-3">
           <input type="email" className="form-control" id="Correo" placeholder="Correo Electronico" value={correo} onChange={(e) => handleCorreo(e.target.value)} />
@@ -52,6 +59,7 @@ const LogIn_form = ({children}) => {
         {(error !== null)&& error}
         <button type="submit" className="btn btn-primary" >Iniciar Sesion</button>
       </form>
+      }
     </div>
   )
 }

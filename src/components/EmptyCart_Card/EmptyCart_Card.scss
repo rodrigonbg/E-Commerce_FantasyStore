@@ -1,11 +1,11 @@
 @import "../../styles/variables";
 .cardCarritoVacio{
-    width: 80vw;
+    width: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
     .mensaje{
-        width: 70%;
+        width: 100%;
         display: flex;
         flex-direction: column;
         align-items: center;

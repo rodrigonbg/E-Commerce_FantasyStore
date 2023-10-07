@@ -5,7 +5,7 @@ import { useContext } from 'react'
 
 const Cart_Item = (props) => {
 
-    const {removeItem} =useContext(CartContext)
+    const {removeItem} = useContext(CartContext)
 
     let saleTag
     let precioOriginalTachado
@@ -20,18 +20,17 @@ const Cart_Item = (props) => {
     }
     return (
         <div className="prodCarrito">
-            <div>
-                <img className="imgCarrito" src={props.prod.item.img} alt={props.prod.item.alt}/>
-                {saleTag}
-            </div>
-            <p className="nombreProdCarrito">{props.prod.item.nombre}</p>
-            <p className="precioProdCarrito">{precioOriginalTachado} ${precioConDescuento}</p>
-
-            {props.children[0]}
-
-            <p className="subtotalProdCarrito">${precioConDescuento*props.prod.cantidad.toFixed(2)}</p>
-
-            {props.children[1]}
+                <picture>
+                    <img className="imgCarrito" src={props.prod.item.img} alt={props.prod.item.alt}/>
+                    {saleTag}
+                </picture>
+                <article>
+                    <p className="nombreProdCarrito">{props.prod.item.nombre}</p>
+                    <p className="precioProdCarrito">{precioOriginalTachado} ${precioConDescuento}</p>
+                    {props.children[0]}
+                    <p className="subtotalProdCarrito">${precioConDescuento*props.prod.cantidad.toFixed(2)}</p>
+                    {props.children[1]}
+                </article>
         </div>
   )
 }

@@ -5,7 +5,7 @@ function Categories() {
 
   return (
     <div>
-      <SectionTitle text={'Categories'}/>
+      <SectionTitle text={'Categorías'}/>
       <CategoryList_Container/>
     </div>
   )

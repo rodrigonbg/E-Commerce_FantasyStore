@@ -4,6 +4,7 @@ import { useState } from 'react'
 import { useContext } from 'react'
 import { UserContext } from '../../context/UserContext/UserContext'
 import SectionTitleH2 from '../SectionTitleH2/SectionTitleH2'
+import {Loading} from '../Loading/Loading'
 
 const SingUp_form = ({children}) => {
 
@@ -18,6 +19,8 @@ const SingUp_form = ({children}) => {
     const [pass, setPass] = useState('')
     const [confirmacionPass, setConfirmacionPass] = useState('')
     const [error, setError] = useState(null)
+
+    const [loading, setLoading] = useState(false)
 
     const handleNombre = (value) =>{
         setNombre(value)
@@ -54,6 +57,7 @@ const SingUp_form = ({children}) => {
 
     const handleForm =(e)=>{
         e.preventDefault()
+        setLoading(true)
 
         if (!nombre || !apellido || !telefono || !correo || !confirmacionCorreo || !fechaNac || !pass || !confirmacionPass ){
             setError(<p className='errorText'>Ningun campo puede quedar vacio</p>)
@@ -66,6 +70,7 @@ const SingUp_form = ({children}) => {
                 fechaNac: fechaNac,
                 contraseña: pass,
             }
+
             singUpUser(user)
 
             handleNombre ('')
@@ -86,7 +91,11 @@ const SingUp_form = ({children}) => {
     <div className='singUp_container'>
         
         {children}
-
+        {
+        loading?
+            <Loading />
+        :
+    
         <form onSubmit={(e) => handleForm(e)}>
 
             <div className="row">
@@ -129,6 +138,10 @@ const SingUp_form = ({children}) => {
 
             <button type="submit" className="btn btn-primary" >Registrarte</button>
         </form>
+        }
+
+        
+
     </div>
   )
 }

@@ -15,8 +15,13 @@ const ItemOnSale_Card = (prod) => {/*items en liquidación */
     let btnAddRemove
     let buttonIcon
     let butonText
-
-    if (cart.some((elemento)=> elemento.item.id === prod.id)){/* creo la variable botón segun corresponda por cada prod. (si está o no en el carrito) */
+    
+    if (prod.stock < 1){
+        btnAddRemove =  <button disabled id={prod.id} className="btn btn-white shadow-sm rounded-pill bg-white cart-btn sinStock" >
+                            Sin Stock
+                        </button>
+    }
+    else if (cart.some((elemento)=> elemento.item.id === prod.id)){/* creo la variable botón segun corresponda por cada prod. (si está o no en el carrito) */
         buttonIcon = <i className="fa-solid fa-xmark"></i>
         butonText = 'Quitar'
         btnAddRemove =  <button id={prod.id} onClick={()=>{removeItem(prod.id)}} className="btn btn-white shadow-sm rounded-pill bg-white cart-btn">

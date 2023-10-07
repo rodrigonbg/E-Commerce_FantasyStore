@@ -12,12 +12,13 @@ const InfoUser_Card = () => {
         <div className='infoUser_card'>
             <SectionTitleH2 text = {'Datos del usuario registrado'}/>
             <hr />
-            <p>Id del usuario registrado: <span>{id}</span></p>
+            <p>ID del usuario registrado: <span>{id}</span></p>
             <p>Nombre: <span>{nombre} {apellido}</span></p>
             <p>Telefono: <span>{telefono}</span></p>
             <p>Correo Electronico: <span>{correo}</span></p>
             <p>Fecha de nacimiento: <span>{fechaNac}</span></p>
         </div>
+
     )
 }
 

@@ -6,10 +6,10 @@ import ItemFullPriceList_Container from '../../components/ItemList_Container/Ite
 const HomePage = () => {
   return (
     <div>
-        <SectionTitle text={'Items On Sale'} />
+        <SectionTitle text={'Productos en Descuento'} />
         <ItemOnSaleList_Container />
 
-        <SectionTitle text={'Featured Products'} />
+        <SectionTitle text={'Destacados'} />
         <ItemFullPriceList_Container/>
     </div>
   )

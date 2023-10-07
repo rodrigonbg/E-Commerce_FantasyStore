@@ -1,12 +1,14 @@
+import SectionTitle from '../SectionTitle/SectionTitle'
 import './Header_hompage.scss'
 import React from 'react'
+import { Link } from 'react-router-dom'
 
 const Header_hompage = () => {
   return (
     <section className="header__gridContainer">
             <section className="header__info"> {/* Titulo y parrafo */}
-                <h1 className="header__info__tittle">Furniture that everyone Loves</h1>
-                <p className="header__info__p">We have 5000+ reviews and our costumers trust on our Furnitures and quality products.</p>
+                <SectionTitle className ={'header__info__tittle'}text={'Furniture that everyone Loves'}/>
+                <p className="header__info__p">Tenemos mas de 5000 reviews y nuestros clientes confían en nuestros muebles y en la calidad de nuestros productos.</p>
             </section> 
 
             <section className="header__imgs"> {/* Carrusel del header */}
@@ -34,8 +36,8 @@ const Header_hompage = () => {
             </section>
 
             <section className="header__buttons"> {/* Botones buy now, explore */}
-                    <input className="header__buyNowButton" type="button" value="Buy Now"/>
-                    <input className="header__ExploreButton" type="button" value="Explore"/>
+                    <Link to={'/cart'} className='header__buyNowButton'>Compar ahora</Link>
+                    <Link to={'/categories'} className='header__ExploreButton'>Explorar</Link>
             </section>
         </section>
   )
