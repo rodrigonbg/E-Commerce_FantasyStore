@@ -8,7 +8,7 @@ import {Loading} from '../Loading/Loading'
 
 const SingUp_form = ({children}) => {
 
-    const {singUpUser, user} = useContext(UserContext)
+    const {singUpUser, loadingSingUp} = useContext(UserContext)
 
     const [nombre, setNombre] = useState('')
     const [apellido, setApellido] = useState('')
@@ -19,8 +19,6 @@ const SingUp_form = ({children}) => {
     const [pass, setPass] = useState('')
     const [confirmacionPass, setConfirmacionPass] = useState('')
     const [error, setError] = useState(null)
-
-    const [loading, setLoading] = useState(false)
 
     const handleNombre = (value) =>{
         setNombre(value)
@@ -55,9 +53,9 @@ const SingUp_form = ({children}) => {
         setError(null)
     }
 
-    const handleForm =(e)=>{
+    const  handleForm = (e)=>{
         e.preventDefault()
-        setLoading(true)
+        
 
         if (!nombre || !apellido || !telefono || !correo || !confirmacionCorreo || !fechaNac || !pass || !confirmacionPass ){
             setError(<p className='errorText'>Ningun campo puede quedar vacio</p>)
@@ -70,7 +68,6 @@ const SingUp_form = ({children}) => {
                 fechaNac: fechaNac,
                 contraseña: pass,
             }
-
             singUpUser(user)
 
             handleNombre ('')
@@ -92,7 +89,7 @@ const SingUp_form = ({children}) => {
         
         {children}
         {
-        loading?
+        loadingSingUp?
             <Loading />
         :
     

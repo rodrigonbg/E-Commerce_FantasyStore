@@ -14,9 +14,7 @@ const LogIn_form = ({children}) => {
   const [pass, setPass] = useState('')
   const [error, setError] = useState(null)
 
-  const [loading, setLoading] = useState(false)
-
-  const {findUser} = useContext(UserContext)
+  const {findUser, loadingLogIn} = useContext(UserContext)
 
   const handleCorreo = (value) =>{
     setCorreo(value)
@@ -28,7 +26,7 @@ const LogIn_form = ({children}) => {
   }
 
   const handleSubmit = async (e) =>{
-    setLoading(true)
+
     e.preventDefault()
 
     if (!correo ||  !pass){
@@ -46,7 +44,7 @@ const LogIn_form = ({children}) => {
 
       {children}
 
-      {loading?
+      {loadingLogIn?
         <Loading/>
         :
       <form onSubmit={(e) => handleSubmit(e)}>

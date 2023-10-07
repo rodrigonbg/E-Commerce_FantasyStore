@@ -17,6 +17,8 @@ export const UserContextProvider = ({children}) => {
     const [correo, setCorreo] = useState(localStorage.getItem("usuario")? JSON.parse(localStorage.getItem("usuario")).correo : null)
     const [fechaNac, setFechaNac] = useState(localStorage.getItem("usuario")? JSON.parse(localStorage.getItem("usuario")).fechaNac : null)
     const [idCompra, setIdCompra] = useState(null)
+    const [loadingLogIn, setLoadingLogIn] = useState(false)
+    const [loadingSingUp, setLoadingSingUp] = useState(false)
     
     const updateLocalStorage = () =>{
         const usuario = {
@@ -107,6 +109,7 @@ export const UserContextProvider = ({children}) => {
     }
 
     const findUser = async (mail, pass) => {
+        setLoadingLogIn(true)
         const user =    query(collection(db, 'usuarios'),
                         where('correo', '==', `${mail.toLowerCase()}`),
                         where('contraseña', '==', `${pass}`),
@@ -152,10 +155,11 @@ export const UserContextProvider = ({children}) => {
                     }
                 })
             })
+            .finally(() => setLoadingLogIn(false))
     }   
 
     const singUpUser = async (user) => {
-        
+        setLoadingSingUp (true)
         /* verifico que el mail no esté registrado */
         const userRef = query(collection(db, 'usuarios'),where('correo', '==', `${user.correo.toLowerCase()}` ),limit(1))
        return await getDocs(userRef)
@@ -191,6 +195,7 @@ export const UserContextProvider = ({children}) => {
                     }
                 })
             })
+            .finally(() => setLoadingSingUp(false))
             
     }
 
@@ -200,7 +205,7 @@ export const UserContextProvider = ({children}) => {
     updateLocalStorage()
 
     return(
-        <UserContext.Provider value={{user, id, nombre, apellido, telefono, correo, fechaNac, singUpUser, findUser, logOut }}>
+        <UserContext.Provider value={{user, id, nombre, apellido, telefono, correo, fechaNac, loadingSingUp, loadingLogIn, singUpUser, findUser, logOut }}>
             {children}
         </UserContext.Provider>
     )
