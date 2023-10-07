@@ -29,7 +29,7 @@ function Contact() {
                     <textarea id="text" className="textField" name="comentario" cols="30" rows="10" required></textarea>
                 </div>
                 <div>
-                    <input className="submitButton" type="submit" value="Enviar"/>
+                    <input className="submitButton" value="Enviar"/>
                 </div>
             </form>
         </div>
